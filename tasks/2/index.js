@@ -8,11 +8,7 @@ const isNumberWierd = (number) => {
   return sum === number;
 };
 
-const isNumberWierdWithOneLine = (number) =>
-  Array.from(Array(number - 1), (_, index) => index + 1).reduce(
-    (acc, x) => (number % x === 0 ? acc + x : acc),
-    0
-  ) === number;
+const isNumberWierdWithOneLine = (number) => Array.from(Array(number - 1), (_, index) => index + 1).reduce((acc, x) => (number % x === 0 ? acc + x : acc), 0) === number;
 
 // Пример
 console.log(isNumberWierd(6), "isNumberWierd с 6");

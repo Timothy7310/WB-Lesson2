@@ -1,3 +1,24 @@
+// с циклом for
+async function runAllFunction(functions) {
+  let fnResult;
+
+  for (let i = 0; i < functions.length; i += 1) {
+    fnResult = await functions[i]();
+    console.log(fnResult, `index of function is ${i}`);
+  }
+}
+
+// с циклом for of
+async function runAllFunction2(functions) {
+  let fnResult;
+
+  for (const [index, fn] of functions.entries()) {
+    fnResult = await fn();
+    console.log(fnResult, `index of function is ${index}`);
+  }
+}
+
+// Пример
 const testFn1 = () => {
   return new Promise((resolve) =>
     setTimeout(() => {
@@ -20,24 +41,5 @@ const testFn4 = () => {
 };
 const fnArray = [testFn1, testFn2, testFn3, testFn4];
 
-// с циклом for
-async function runAllFunction(functions) {
-  let fnResult;
-
-  for (let i = 0; i < functions.length; i += 1) {
-    fnResult = await functions[i]();
-    console.log(fnResult, `index of function is ${i}`);
-  }
-}
-
-// с циклом for of
-async function runAllFunction2(functions) {
-  let fnResult;
-
-  for (const [index, fn] of functions.entries()) {
-    fnResult = await fn();
-    console.log(fnResult, `index of function is ${index}`);
-  }
-}
-
 runAllFunction(fnArray);
+runAllFunction2(fnArray);

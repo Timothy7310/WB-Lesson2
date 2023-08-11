@@ -137,8 +137,7 @@ class LinkedList {
   }
 }
 
+// Пример
 const list = new LinkedList();
-
 list.createFromJSON(data);
-
 console.log(list);

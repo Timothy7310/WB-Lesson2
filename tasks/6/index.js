@@ -1,3 +1,9 @@
+const sortUsers = (users) =>
+  users.sort((x, y) =>
+    x.age !== y.age ? x.age - y.age : x.name.localeCompare(y.name)
+  );
+
+// Пример
 const data = [
   {
     name: "B. John",
@@ -20,10 +26,4 @@ const data = [
     age: "15",
   },
 ];
-
-const sortUsers = (users) =>
-  users.sort((x, y) =>
-    x.age !== y.age ? x.age - y.age : x.name.localeCompare(y.name)
-  );
-
 console.log(sortUsers(data));

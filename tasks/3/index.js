@@ -41,7 +41,12 @@ const mathX = () => {
   };
 };
 
+// Пример
 const some = mathX();
 
-console.log(some.getFibonachiNumber(6));
-console.log(some.getAllFibonachiNumbers(10));
+console.log(some.getFibonachiNumber(6), "getFibonachiNumber(6)");
+console.log(some.getAllFibonachiNumbers(10), "getAllFibonachiNumbers(10)");
+
+console.log(some.isPrime(6), "isPrime(6)");
+console.log(some.isPrime(3), "isPrime(3)");
+console.log(some.getAllPrimeNumbers(28), "getAllPrimeNumbers(28)");

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        min-height: 100vh;
+        background: #11131c;
+        color: #5d6798;
+        font-family: sans-serif;
+        font-weight: 400;
+      }
+      button {
+        cursor: pointer;
+        padding: 10px 15px;
+        border: 1px solid #a8c445;
+        background-color: transparent;
+        font-family: sans-serif;
+        font-weight: 600;
+        color: white;
+      }
+      table.iksweb {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        height: auto;
+      }
+      table.iksweb,
+      table.iksweb td,
+      table.iksweb th {
+        border: 1px solid #5d6798;
+      }
+      table.iksweb td,
+      table.iksweb th {
+        padding: 3px;
+        width: 30px;
+        height: 35px;
+      }
+      table.iksweb th {
+        background: #347c99;
+        color: #fff;
+        font-weight: normal;
+      }
+      thead {
+        color: white;
+      }
+      .pagination {
+        margin-top: 15px;
+        display: flex;
+        gap: 5px;
+      }
+      .pagination__button--active {
+        pointer-events: none;
+        background-color: #a8c445;
+      }
+    </style>
+    <table class="iksweb">
+      <thead id="thead">
+        <tr>
+          <td>
+            <span>Имя</span>
+            <button class="sort-desc" data-type="string" data-field="fname">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="string" data-field="fname">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Фамилия</span>
+            <button class="sort-desc" data-type="string" data-field="lname">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="string" data-field="lname">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Телефон</span>
+            <button class="sort-desc" data-type="phone" data-field="tel">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="phone" data-field="tel">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Адресс</span>
+            <button class="sort-desc" data-type="string" data-field="address">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="string" data-field="address">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Город</span>
+            <button class="sort-desc" data-type="string" data-field="city">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="string" data-field="city">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Штат</span>
+            <button class="sort-desc" data-type="string" data-field="state">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="string" data-field="state">
+              ASC
+            </button>
+          </td>
+          <td>
+            <span>Индекс</span>
+            <button class="sort-desc" data-type="number" data-field="zip">
+              DESC
+            </button>
+            <button class="sort-asc" data-type="number" data-field="zip">
+              ASC
+            </button>
+          </td>
+        </tr>
+      </thead>
+      <tbody class="tbody"></tbody>
+    </table>
+    <div class="pagination">
+      <button class="pagination__button">1</button>
+      <button class="pagination__button">2</button>
+      <button class="pagination__button">3</button>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

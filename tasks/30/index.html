@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
+        margin: 0px auto;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .item {
+        background-color: steelblue;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        color: #fff;
+        overflow: hidden;
+        max-width: 170px;
+      }
+      .item__name {
+        font-size: 22px;
+        font-weight: bold;
+        padding: 0px 10px;
+      }
+      .item__year {
+        padding: 0px 10px;
+      }
+      .item__poster {
+        aspect-ratio: 8/12;
+        object-fit: cover;
+      }
+    </style>
+
+    <form action="" id="form">
+      <label>
+        Название фильма
+        <input type="text" name="name" />
+      </label>
+      <label>
+        Год выхода
+        <input type="number" name="year" />
+      </label>
+      <label>
+        Постер
+        <input type="file" accept="image/png, image/jpeg" name="poster" />
+      </label>
+      <button type="submit" id="submit">Создать</button>
+    </form>
+
+    <ul class="list"></ul>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -7,7 +7,7 @@ const showMaxCallStack = () => {
     };
     inc();
   } catch (e) {
-    console.log(state);
+    document.querySelector("#current").textContent = state;
   }
 };
 

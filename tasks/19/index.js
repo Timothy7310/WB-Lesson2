@@ -7,7 +7,8 @@ const showMaxSizeOfLS = () => {
     } catch (e) {
       const totalLength = localStorage.getItem("--test--").length;
       const total = Math.round(totalLength / 1024);
-      console.log(`Максимальный размер LocalStorage: ${total} kB`);
+      const root = document.querySelector("#root");
+      root.innerHTML = `Максимальный размер LocalStorage: <span>${total} kB</span>`;
       return;
     }
   }

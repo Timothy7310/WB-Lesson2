@@ -3,10 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Создание карточки фильма</title>
   </head>
   <body>
     <style>
+      body {
+        min-height: 100vh;
+        background: #11131c;
+        color: #5d6798;
+        font-family: sans-serif;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
       form {
         display: flex;
         flex-direction: column;
@@ -49,25 +60,66 @@
         aspect-ratio: 8/12;
         object-fit: cover;
       }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      input {
+        background-color: transparent;
+        border: 2px solid #5d6798;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        color: #fff;
+        padding: 0px 15px;
+      }
+
+      button {
+        border: 2px solid #5d6798;
+        background-color: transparent;
+        color: #5d6798;
+        border-radius: 10px;
+        padding: 10px 15px;
+        height: 100%;
+        cursor: pointer;
+        transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+      button:hover {
+        color: #a8c445;
+        border: 2px solid #a8c445;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
     </style>
 
-    <form action="" id="form">
-      <label>
-        Название фильма
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Год выхода
-        <input type="number" name="year" />
-      </label>
-      <label>
-        Постер
-        <input type="file" accept="image/png, image/jpeg" name="poster" />
-      </label>
-      <button type="submit" id="submit">Создать</button>
-    </form>
+    <div class="content">
+      <form action="" id="form">
+        <label>
+          Название фильма
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Год выхода
+          <input type="number" name="year" />
+        </label>
+        <label>
+          Постер
+          <input type="file" accept="image/png, image/jpeg" name="poster" />
+        </label>
+        <button type="submit" id="submit">Создать</button>
+      </form>
 
-    <ul class="list"></ul>
+      <ul class="list"></ul>
+    </div>
 
     <script src="./index.js"></script>
   </body>

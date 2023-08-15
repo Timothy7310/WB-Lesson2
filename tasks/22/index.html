@@ -1,28 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Limit of Call Stack</title>
+    <title>Размер Call Stack</title>
   </head>
   <body>
-    <ul>
-      <ol>
-        Firefox: 36317
-      </ol>
-      <ol>
-        Opera: 13949
-      </ol>
-      <ol>
-        Chrome: 13949
-      </ol>
-      <ol>
-        Chrome: 13949
-      </ol>
-      <ol>
-        Yandex: 13952
-      </ol>
-    </ul>
+    <style>
+      body {
+        min-height: 100vh;
+        background: #11131c;
+        color: #5d6798;
+        font-family: sans-serif;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+      span {
+        color: #a8c445;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        gap: 4px;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      p {
+        margin: 0;
+      }
+    </style>
+    <div>
+      <ul>
+        <li>Firefox: <span>36317</span></li>
+        <li>Opera:<span>13949</span></li>
+        <li>Chrome: <span>13949</span></li>
+        <li>Chrome: <span>13949</span></li>
+        <li>Yandex: <span>13952</span></li>
+      </ul>
+      <p>Текущее значение: <span id="current"></span></p>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>

@@ -17,7 +17,7 @@ const getImage = (url) => {
 // Пример
 const createCard = (url) => {
   const html = `<img src="${url}" alt=""/>`;
-  document.querySelector("body").innerHTML = html;
+  document.querySelector("#root").innerHTML = html;
 };
 
 getImage("https://rickandmortyapi.com/api/character/1")

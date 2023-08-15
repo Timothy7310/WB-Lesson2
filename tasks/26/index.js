@@ -9,5 +9,5 @@ const createHTMLElement = (rootSelector, tag, css) => {
 createHTMLElement(
   "body",
   "div",
-  "width: 200px; height: 200px; background-color: tomato"
+  "width: 200px; height: 200px; background-color: cornflowerblue"
 );

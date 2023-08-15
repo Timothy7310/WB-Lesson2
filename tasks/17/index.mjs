@@ -1,3 +1,5 @@
+import { debounce, throttle } from "../18/index.mjs";
+
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search");
 const showResultButton = document.querySelector("#show-result");
@@ -24,6 +26,13 @@ const getData = async (query) => {
   return addresses.suggestions;
 };
 
+const fetchAddresses = async () => {
+  const query = searchInput.value;
+
+  const info = await getData(query);
+  return info;
+};
+
 const createCards = (addresses) => {
   showResultButton.textContent = "Закрыть";
   showResultButton.setAttribute("data-type", "close");
@@ -45,11 +54,14 @@ const createCards = (addresses) => {
 
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const query = searchInput.value;
 
-  const info = await getData(query);
-  createCards(info);
+  createCards(await fetchAddresses());
 });
+
+searchInput.addEventListener(
+  "input",
+  debounce(async () => createCards(await fetchAddresses()), 400)
+);
 
 showResultButton.addEventListener("click", (e) => {
   const type = showResultButton.getAttribute("data-type");

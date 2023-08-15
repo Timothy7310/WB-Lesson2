@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Карта</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #11131c;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .search__form {
+        display: flex;
+        align-items: center;
+        height: 45px;
+        gap: 10px;
+      }
+      .search {
+        background-color: transparent;
+        border: 2px solid #5d6798;
+        height: 100%;
+        width: 200px;
+        border-radius: 10px;
+        color: #fff;
+        padding: 0px 15px;
+        box-sizing: border-box;
+      }
+      .search__result-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+      .search__result-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .search__result-wrap h2 {
+        color: #fff;
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .search__result-button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        color: #fff;
+        cursor: pointer;
+      }
+      .search__result-button[data-type="open"] {
+        color: #a8c445;
+      }
+      .search__result-button[data-type="close"] {
+        color: tomato;
+      }
+      .search__result {
+        visibility: visible;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
+        gap: 5px;
+        color: #fff;
+        font-family: sans-serif;
+        transition: opacity 0.2s ease-in;
+      }
+      .search__result--active {
+        visibility: visible;
+        opacity: 1;
+      }
+      .search__button {
+        border: 2px solid #5d6798;
+        background-color: transparent;
+        color: #5d6798;
+        border-radius: 10px;
+        padding: 10px 15px;
+        height: 100%;
+        cursor: pointer;
+        transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+      .search__button:hover {
+        color: #a8c445;
+        border: 2px solid #a8c445;
+      }
+      .search__result-item button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: #fff;
+      }
+      .search__result-item button.active {
+        color: #a8c445;
+      }
+    </style>
+    <div class="content">
+      <form class="search__form" id="search-form">
+        <input class="search" type="text" id="search" placeholder="Поиск" />
+        <button type="submit" class="search__button" id="search-button">
+          Поиск
+        </button>
+      </form>
+      <div class="search__result-wrap">
+        <div class="search__result-top">
+          <h2>Список:</h2>
+          <button
+            class="search__result-button"
+            id="show-result"
+            data-type="open"
+          >
+            Открыть
+          </button>
+        </div>
+        <ul class="search__result" id="search-result">
+          <li>Пусто</li>
+        </ul>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

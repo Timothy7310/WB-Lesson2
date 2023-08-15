@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пароль</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #11131c;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .password {
+        background-color: transparent;
+        border: 2px solid #5d6798;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        color: #fff;
+        padding: 0px 36px 0px 15px;
+      }
+      .password__wrap {
+        position: relative;
+      }
+      .password__button {
+        position: absolute;
+        right: 7px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+      }
+      .password__button-icon {
+        width: 100%;
+        height: 100%;
+      }
+      .password__warning {
+        position: absolute;
+        width: 0%;
+        max-width: 100%;
+        height: 2px;
+        left: 0px;
+        bottom: -10px;
+        background-color: crimson;
+      }
+      .password__warning[data-level="bad"] {
+        background-color: crimson;
+      }
+      .password__warning[data-level="normal"] {
+        background-color: orangered;
+      }
+      .password__warning[data-level="good"] {
+        background-color: yellowgreen;
+      }
+
+      .hint {
+        visibility: visible;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        transition: opacity 0.2s ease-in;
+      }
+
+      .hint--active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .hint__title {
+        margin: 0;
+        color: #fff;
+        font-family: sans-serif;
+      }
+
+      .hint__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        color: #fff;
+        font-family: sans-serif;
+      }
+
+      .hint__item--includes {
+        display: none;
+      }
+    </style>
+    <div class="content">
+      <div class="password__wrap">
+        <input
+          type="password"
+          id="password"
+          placeholder="Пароль"
+          class="password"
+        />
+        <button
+          id="password-button"
+          class="password__button"
+          aria-label="Открыть пароль"
+        >
+          <img
+            id="password-button-icon"
+            class="password__button-icon"
+            src="./eye-open.svg"
+            alt=""
+          />
+        </button>
+        <span class="password__warning" id="progress"></span>
+      </div>
+      <div class="hint" id="hint">
+        <h2 class="hint__title">Пароль должен содержать:</h2>
+        <ul class="hint__list">
+          <li class="hint__item hint__item--length">Длину от 10 символов</li>
+          <li class="hint__item hint__item--symbols">
+            Спец. символы: ! @ # $ % ^ &
+          </li>
+          <li class="hint__item hint__item--numbers">Числа</li>
+          <li class="hint__item hint__item--register">Разный регистр</li>
+        </ul>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

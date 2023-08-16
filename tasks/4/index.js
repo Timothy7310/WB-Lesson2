@@ -73,6 +73,7 @@ const pluralWord = (count, word) => {
   return `${count} ${word.slice(0, -1)}${suffixes6.get(form)}`;
 };
 
+// Пример
 console.log(pluralWord(0, "страна"));
 console.log(pluralWord(0, "авария"));
 console.log(pluralWord(0, "сообщение"));

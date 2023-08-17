@@ -40,10 +40,13 @@ const getPosts = async () => {
     },
     (posts) => {
       if (posts.response) {
+        console.log(posts);
         posts = posts.response.items;
       }
     }
   );
+
+  console.log(posts);
 
   return posts;
 };

@@ -154,9 +154,9 @@ const renderPosts = () => {
       access_token: token,
       v: 5.131,
     },
-    async (posts) => {
-      if (posts.response) {
-        const posts = posts.response.items;
+    async (data) => {
+      if (data.response) {
+        const posts = data.response.items;
         offset += 10;
         console.log(savedPosts);
         createPosts([...savedPosts, ...posts]);

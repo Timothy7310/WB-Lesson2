@@ -41,14 +41,11 @@ const getPosts = async () => {
     (posts) => {
       if (posts.response) {
         console.log(posts);
-        posts = posts.response.items;
+        // posts = posts.response.items;
+        return posts.response.items;
       }
     }
   );
-
-  console.log(posts);
-
-  return posts;
 };
 
 const createPostText = (text) => {

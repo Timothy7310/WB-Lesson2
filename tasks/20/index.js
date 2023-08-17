@@ -5,9 +5,15 @@
 // const count = 10;
 // let offset = 0;
 
-// const script = document.createElement("script");
-// script.src = `https://api.vk.com/method/wall.get?owner_id=${publicId}&access_token=${token}&offset=${offset}&count=${count}&callback=getWallData&v=${version}`;
-// document.getElementsByTagName("head")[0].appendChild(script);
+// // const createCallback = () => {
+// //   // const script = document.querySelector("#fetch")
+// //   //   ? document.querySelector("#fetch")
+// //   //   : document.createElement("script");
+// //   // // const script = document.createElement("script");
+// //   // script.setAttribute("id", "fetch");
+// //   // script.src = `https://api.vk.com/method/wall.get?owner_id=${publicId}&access_token=${token}&offset=${offset}&count=${count}&callback=getWallData&v=${version}`;
+// //   // document.getElementsByTagName("head")[0].appendChild(script);
+// // };
 
 // const createPostText = (text) => {
 //   let textContent = null;
@@ -125,11 +131,25 @@
 //   posts.forEach((post) => root.append(createPost(post)));
 // };
 
-// const getWallData = async (result) => {
-//   // const posts = await result.response.items;
+// const createFetch = () => {
+//   console.log(offset);
+//   const script = document.querySelector("#fetch")
+//     ? document.querySelector("#fetch")
+//     : document.createElement("script");
+//   script.setAttribute("id", "fetch");
+//   script.src = `https://api.vk.com/method/wall.get?owner_id=${publicId}&access_token=${token}&offset=${offset}&count=${count}&callback=${callbackName}&v=${version}`;
 
-//   // createPosts(posts);
+//   if (offset === 0) {
+//     document.getElementsByTagName("head")[0].appendChild(script);
+//   }
+
+//   getWallData = (result) => {
+//     console.log("test");
+//     const posts = result.response.items;
+//     createPosts(posts);
+//   };
 // };
+// createFetch();
 
 // let options = {
 //   root: document.querySelector("#posts"),
@@ -139,9 +159,8 @@
 
 // let callback = (entries, observer) => {
 //   if (entries[0].isIntersecting) {
-//     console.log("test");
 //     offset += 10;
-//     getWallData();
+//     createFetch();
 //   }
 // };
 
@@ -149,25 +168,14 @@
 // let target = document.querySelector("#loader");
 // observer.observe(target);
 
-var myHeaders = new Headers();
-myHeaders.append(
-  "Authorization",
-  "Bearer 685cb537685cb537685cb537916b49e1446685c685cb5370c87266d7afa4818afeb48c3"
-);
+const getData = async () => {
+  const res = await fetch(
+    "https://api.vk.com/method/wall.get?owner_id=-179664673&offset=0&count=10&v=5.131&access_token=685cb537685cb537685cb537916b49e1446685c685cb5370c87266d7afa4818afeb48c3"
+  );
 
-var raw = "";
+  const chars = await res.json();
 
-var requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow",
+  return chars;
 };
 
-fetch(
-  "https://api.vk.com/method/wall.get?owner_id=-179664673&offset=0&count=10&v=5.131",
-  requestOptions
-)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
+(async () => console.log(await getData()))();

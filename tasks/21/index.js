@@ -29,7 +29,27 @@ const getPosts = async () => {
 
   let posts;
 
-  await VK.Api.call(
+  console.log(
+    await VK.Api.call(
+      "wall.get",
+      {
+        owner_id: publicId,
+        count: count,
+        offset: offset,
+        access_token: token,
+        v: 5.131,
+      },
+      (posts) => {
+        if (posts.response) {
+          console.log(posts);
+          // posts = posts.response.items;
+          return posts.response.items;
+        }
+      }
+    )
+  );
+
+  return await VK.Api.call(
     "wall.get",
     {
       owner_id: publicId,

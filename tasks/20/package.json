@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "local-cors-proxy": "^1.1.0"
-  },
-  "scripts": {
-    "proxy": "lcp --proxyUrl https://timothy7310.github.io/WB-Lesson2"
-  }
-}

@@ -1,5 +1,5 @@
 const token =
-  "685cb537685cb537685cb537916b49e1446685c685cb5370c87266d7afa4818afeb48c3";
+  "86f1c5a586f1c5a586f1c5a5a085e49fd7886f186f1c5a5e22ffb47eceb7c0de4757c76";
 const publicId = "-179664673";
 const version = 5.131;
 const count = 10;
@@ -16,17 +16,7 @@ const saveData = (offset, posts) => {
   localStorage.setItem("posts", newPosts);
 };
 
-const getPosts = async () => {
-  const response = await fetch(
-    `https://api.vk.com/method/wall.get?owner_id=${publicId}&offset=${offset}&count=${count}&v=${version}&access_token=${token}`
-  );
-
-  const posts = await response.json();
-
-  console.log("Сейчас был запрос к VK API");
-
-  return posts.response.items;
-};
+const showLSMemory = () => {};
 
 const createPostText = (text) => {
   let textContent = null;
@@ -144,9 +134,27 @@ const createPosts = (posts) => {
   posts.forEach((post) => root.append(createPost(post)));
 };
 
-const renderPosts = async () => {
-  const posts = await getPosts();
-  createPosts(posts);
+const renderPosts = () => {
+  VK.Api.call(
+    "wall.get",
+    {
+      owner_id: publicId,
+      count: count,
+      offset: offset,
+      access_token: token,
+      v: 5.131,
+    },
+    async (data) => {
+      if (data.response) {
+        const posts = data.response.items;
+        offset += 10;
+        createPosts([...savedPosts, ...posts]);
+        saveData(offset, posts);
+      }
+    }
+  );
+
+  console.log("Сейчас был запрос к VK API");
 };
 
 let intersectionOption = {
@@ -160,18 +168,11 @@ const intersectionCallback = async (entries) => {
     intersectingCount += 1;
 
     if (intersectingCount === 1 && isSavedPostsEmpty) {
-      const posts = await getPosts();
-      offset += 10;
-      createPosts(posts);
-      saveData(offset, posts);
+      renderPosts();
     } else if (intersectingCount === 1 && !isSavedPostsEmpty) {
       createPosts(savedPosts);
     } else {
-      const posts = await getPosts();
-      offset += 10;
-
-      createPosts([...savedPosts, ...posts]);
-      saveData(offset, posts);
+      renderPosts();
     }
   }
 };

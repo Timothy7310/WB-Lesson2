@@ -179,11 +179,11 @@ const intersectionCallback = async (entries) => {
     intersectingCount += 1;
 
     if (intersectingCount === 1 && isSavedPostsEmpty) {
-      getPosts();
+      renderPosts();
     } else if (intersectingCount === 1 && !isSavedPostsEmpty) {
       createPosts(savedPosts);
     } else {
-      getPosts();
+      renderPosts();
     }
   }
 };

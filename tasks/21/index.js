@@ -27,29 +27,9 @@ const getPosts = async () => {
 
   console.log("Сейчас был запрос к VK API");
 
-  let posts;
+  let postsK;
 
-  console.log(
-    await VK.Api.call(
-      "wall.get",
-      {
-        owner_id: publicId,
-        count: count,
-        offset: offset,
-        access_token: token,
-        v: 5.131,
-      },
-      (posts) => {
-        if (posts.response) {
-          console.log(posts);
-          // posts = posts.response.items;
-          return posts.response.items;
-        }
-      }
-    )
-  );
-
-  return await VK.Api.call(
+  await VK.Api.call(
     "wall.get",
     {
       owner_id: publicId,
@@ -60,12 +40,16 @@ const getPosts = async () => {
     },
     (posts) => {
       if (posts.response) {
-        console.log(posts);
-        // posts = posts.response.items;
-        return posts.response.items;
+        postsK = posts.response.items;
+
+        console.log(postsK);
       }
     }
   );
+
+  console.log(postsK);
+
+  return postsK;
 };
 
 const createPostText = (text) => {

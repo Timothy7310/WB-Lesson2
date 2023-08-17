@@ -8,15 +8,26 @@ let savedPosts = JSON.parse(localStorage.getItem("posts")) ?? [];
 let intersectingCount = 0;
 let isSavedPostsEmpty = savedPosts.length === 0;
 
+const getLSMemory = () => {
+  const usedMemory = Math.round(JSON.stringify(localStorage).length / 1024);
+
+  return usedMemory;
+};
+
+const updateLSMemory = () => {
+  const lsSizeRoot = document.querySelector("#ls-size");
+  lsSizeRoot.textContent = `${getLSMemory()} kB`;
+};
+updateLSMemory();
+
 const saveData = (offset, posts) => {
   const oldPosts = JSON.parse(localStorage.getItem("posts")) ?? [];
   const newPosts = JSON.stringify([...oldPosts, ...posts]);
 
   localStorage.setItem("offset", offset);
   localStorage.setItem("posts", newPosts);
+  updateLSMemory();
 };
-
-const showLSMemory = () => {};
 
 const createPostText = (text) => {
   let textContent = null;

@@ -94,6 +94,7 @@
       ::-webkit-scrollbar {
         width: 16px;
       }
+
       .loader {
         width: 100%;
         height: 50px;
@@ -101,8 +102,22 @@
         visibility: hidden;
         opacity: 0;
       }
+
+      .ls-size {
+        color: #ade55c;
+      }
+
+      .ls-size-wrap {
+        text-align: center;
+        margin: 20px 0px;
+        display: block;
+      }
     </style>
     <div id="root">
+      <span class="ls-size-wrap">
+        LocalStorage занимает
+        <span class="ls-size" id="ls-size">0 kB</span> места
+      </span>
       <section class="posts" id="posts">
         <ul class="posts__list" id="posts-list"></ul>
         <div class="loader" id="loader"></div>

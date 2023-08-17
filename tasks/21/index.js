@@ -18,39 +18,15 @@ const saveData = (offset, posts) => {
 
 const showLSMemory = () => {};
 
-const getPosts = async () => {
-  // const response = await fetch(
-  //   `https://api.vk.com/method/wall.get?owner_id=${publicId}&offset=${offset}&count=${count}&v=${version}&access_token=${token}`
-  // );
+// const getPosts = async () => {
+//   // const response = await fetch(
+//   //   `https://api.vk.com/method/wall.get?owner_id=${publicId}&offset=${offset}&count=${count}&v=${version}&access_token=${token}`
+//   // );
 
-  // const posts = await response.json();
+//   // const posts = await response.json();
 
-  console.log("Сейчас был запрос к VK API");
-
-  let postsK;
-
-  await VK.Api.call(
-    "wall.get",
-    {
-      owner_id: publicId,
-      count: count,
-      offset: offset,
-      access_token: token,
-      v: 5.131,
-    },
-    (posts) => {
-      if (posts.response) {
-        postsK = posts.response.items;
-
-        console.log(postsK);
-      }
-    }
-  );
-
-  console.log(postsK);
-
-  return postsK;
-};
+//   console.log("Сейчас был запрос к VK API");
+// };
 
 const createPostText = (text) => {
   let textContent = null;
@@ -168,9 +144,28 @@ const createPosts = (posts) => {
   posts.forEach((post) => root.append(createPost(post)));
 };
 
-const renderPosts = async () => {
-  const posts = await getPosts();
-  createPosts(posts);
+const renderPosts = () => {
+  VK.Api.call(
+    "wall.get",
+    {
+      owner_id: publicId,
+      count: count,
+      offset: offset,
+      access_token: token,
+      v: 5.131,
+    },
+    async (posts) => {
+      if (posts.response) {
+        const posts = posts.response.items;
+        offset += 10;
+        console.log(savedPosts);
+        createPosts([...savedPosts, ...posts]);
+        saveData(offset, posts);
+      }
+    }
+  );
+
+  console.log("Сейчас был запрос к VK API");
 };
 
 let intersectionOption = {
@@ -184,18 +179,11 @@ const intersectionCallback = async (entries) => {
     intersectingCount += 1;
 
     if (intersectingCount === 1 && isSavedPostsEmpty) {
-      const posts = await getPosts();
-      offset += 10;
-      createPosts(posts);
-      saveData(offset, posts);
+      getPosts();
     } else if (intersectingCount === 1 && !isSavedPostsEmpty) {
       createPosts(savedPosts);
     } else {
-      const posts = await getPosts();
-      offset += 10;
-
-      createPosts([...savedPosts, ...posts]);
-      saveData(offset, posts);
+      getPosts();
     }
   }
 };

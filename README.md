@@ -59,9 +59,9 @@
 19. Подсчитать максимальный объем данных, который можно записать в localStorage вашего браузера.  
     [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/19/index.js)  [Деплой](https://timothy7310.github.io/WB-Lesson2/tasks/19/index.html)
 20. Реализовать виджет, отображающий список постов из любого паблика в VK (подойдет любой паблик, где постов очень много). Например, с помощью [этой функции API VK](https://dev.vk.com/ru/method/wall.get). Виджет должен иметь фиксированные размеры и возможность прокрутки. При прокрутке содержимого виджета до конца должны подгружаться новые посты. Необходимо реализовать возможность кэширования уже загруженных данных: если пользователь закрыл страницу, а потом снова открыл ее, виджет должен отображать все загруженные ранее данные (новые данные должны подгружаться из учетом уже загруженных ранее).  
-    [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/20/index.js)  [Деплой](https://timothy7310.github.io/WB-Lesson2/tasks/20/index.html)
+    [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/20/index.js)  [Деплой](https://oauth.vk.com/authorize?client_id=51731058&redirect_uri=https://timothy7310.github.io/WB-Lesson2/tasks/20/index.html&display=page&scope=offline,wall&response_type=token&v=5.131&state=123456)
 21. Реализовать функцию подсчета объема памяти занимаемого данными в LocalStorage для предыдущей задачи. При изменении данных в localStorage в консоль должен выводиться объем занятой памяти / максимальный размер хранилища.  
-    [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/21/index.js)  [Деплой](https://timothy7310.github.io/WB-Lesson2/tasks/21/index.html)
+    [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/21/index.js)  [Деплой](https://oauth.vk.com/authorize?client_id=51731058&redirect_uri=https://timothy7310.github.io/WB-Lesson2/tasks/21/index.html&display=page&scope=offline,wall&response_type=token&v=5.131&state=123456)
 22. Вычислить размер коллстэка в основных браузерах: Chrome, Firefox, Opera и Safari (если есть возможность).  
     [Решение](https://github.com/Timothy7310/WB-Lesson2/blob/main/tasks/22/index.js)  [Деплой](https://timothy7310.github.io/WB-Lesson2/tasks/22/index.html)
 23. Посчитайте сколько раз можно вызвать функцию document.write() внутри document.write(). Объясните результат.  

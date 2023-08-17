@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VK виджет</title>
+    <script
+      src="https://vk.com/js/api/openapi.js?169"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <style>
@@ -104,6 +108,11 @@
         <div class="loader" id="loader"></div>
       </section>
     </div>
+    <script type="text/javascript">
+      VK.init({
+        apiId: 51731058,
+      });
+    </script>
     <script src="./index.js"></script>
   </body>
 </html>

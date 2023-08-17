@@ -18,16 +18,6 @@ const saveData = (offset, posts) => {
 
 const showLSMemory = () => {};
 
-// const getPosts = async () => {
-//   // const response = await fetch(
-//   //   `https://api.vk.com/method/wall.get?owner_id=${publicId}&offset=${offset}&count=${count}&v=${version}&access_token=${token}`
-//   // );
-
-//   // const posts = await response.json();
-
-//   console.log("Сейчас был запрос к VK API");
-// };
-
 const createPostText = (text) => {
   let textContent = null;
   let textLink = null;

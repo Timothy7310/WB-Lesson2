@@ -162,7 +162,7 @@ const renderPosts = () => {
 let intersectionOption = {
   root: document.querySelector("#posts"),
   rootMargin: "0px",
-  threshold: 1.0,
+  threshold: 0.2,
 };
 
 const intersectionCallback = async (entries) => {

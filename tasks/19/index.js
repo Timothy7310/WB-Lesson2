@@ -9,11 +9,10 @@ const showMaxSizeOfLS = () => {
       const total = Math.round(totalLength / 1024);
       const root = document.querySelector("#root");
       root.innerHTML = `Максимальный размер LocalStorage: <span>${total} kB</span>`;
+      localStorage.removeItem("--test--");
       return;
     }
   }
-
-  localStorage.removeItem("--test--");
 };
 
 showMaxSizeOfLS();

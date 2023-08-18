@@ -50,6 +50,8 @@ const createPostText = (text) => {
       textLink
         ? `<a
               href="${textLink}"
+              target="_blank"
+              rel="nofollow noopener"
               class="posts__item-link"
             >
               ${textLink}
@@ -177,9 +179,9 @@ const intersectionCallback = async (entries) => {
   }
 };
 
-let observer = new IntersectionObserver(
+const observer = new IntersectionObserver(
   intersectionCallback,
   intersectionOption
 );
-let target = document.querySelector("#loader");
+const target = document.querySelector("#loader");
 observer.observe(target);

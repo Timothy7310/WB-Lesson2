@@ -7,6 +7,7 @@ let offset = +localStorage.getItem("offset") ?? 0;
 let savedPosts = JSON.parse(localStorage.getItem("posts")) ?? [];
 let intersectingCount = 0;
 let isSavedPostsEmpty = savedPosts.length === 0;
+let maxSizeLS = localStorage.getItem("max-size-ls") ?? null;
 
 const getLSMemory = () => {
   const usedMemory = Math.round(JSON.stringify(localStorage).length / 1024);
@@ -14,9 +15,29 @@ const getLSMemory = () => {
   return usedMemory;
 };
 
+const getMaxSizeOfLS = () => {
+  if (maxSizeLS) return;
+  let value = "1".repeat(10000);
+  for (let i = 0; i < Infinity; i += 1) {
+    try {
+      localStorage.setItem("--test--", value);
+      value += "1".repeat(10000);
+    } catch (e) {
+      const size = getLSMemory();
+      localStorage.setItem("max-size-ls", size);
+      maxSizeLS = size;
+      localStorage.removeItem("--test--");
+      return;
+    }
+  }
+};
+getMaxSizeOfLS();
+
 const updateLSMemory = () => {
   const lsSizeRoot = document.querySelector("#ls-size");
+  const lsSizeMaxRoot = document.querySelector("#ls-max-size");
   lsSizeRoot.textContent = `${getLSMemory()} kB`;
+  lsSizeMaxRoot.textContent = `${maxSizeLS} kB`;
 };
 updateLSMemory();
 
@@ -61,6 +82,8 @@ const createPostText = (text) => {
       textLink
         ? `<a
               href="${textLink}"
+              target="_blank"
+              rel="nofollow noopener"
               class="posts__item-link"
             >
               ${textLink}
@@ -159,7 +182,6 @@ const renderPosts = () => {
       if (data.response) {
         const posts = data.response.items;
         offset += 10;
-        console.log(savedPosts);
         createPosts([...savedPosts, ...posts]);
         saveData(offset, posts);
       }
@@ -176,6 +198,7 @@ let intersectionOption = {
 };
 
 const intersectionCallback = async (entries) => {
+  console.log("enter");
   if (entries[0].isIntersecting) {
     intersectingCount += 1;
 
@@ -189,9 +212,9 @@ const intersectionCallback = async (entries) => {
   }
 };
 
-let observer = new IntersectionObserver(
+const observer = new IntersectionObserver(
   intersectionCallback,
   intersectionOption
 );
-let target = document.querySelector("#loader");
+const target = document.querySelector("#loader");
 observer.observe(target);
